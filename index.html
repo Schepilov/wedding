@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Саша и Ксюша: приглашение на свадьбу</title>
+  <meta name="description" content="Приглашаем стать частью нашей&nbsp;свадьбы!">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:url" content="https://schepi.love">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Саша и Ксюша: приглашение на свадьбу">
+  <meta property="og:description" content="Приглашаем стать частью нашей&nbsp;свадьбы!">
+  <meta property="og:image" content="https://schepi.love/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Приглашаем стать частью нашей&nbsp;свадьбы!">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Саша и Ксюша: приглашение на свадьбу">
+  <meta name="twitter:description" content="Приглашаем стать частью нашей&nbsp;свадьбы!">
+  <meta name="twitter:image" content="https://schepi.love/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="Приглашаем стать частью нашей&nbsp;свадьбы!">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Сбрасываем скролл до рендера страницы, чтобы не было flash -->
+  <script>
+    document.documentElement.classList.add('is-preloading');
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
+  </script>
+
+  <link rel="preload" href="assets/fonts/lapkoi.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/TTChocolates-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/TTChocolates-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <audio id="bg-music" loop preload="none">
+    <source src="assets/audio/background.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Экран загрузки -->
+  <div class="loader" id="loader">
+    <div class="loader__heart-wrap">
+      <div class="loader__heart-track"></div>
+      <div class="loader__heart-fill" id="loaderFill"></div>
+      <span class="loader__percent" id="loaderPercent">0%</span>
+    </div>
+    <p class="loader__text" id="loaderText">Загрузка.</p>
+  </div>
+
+  <!-- Музыкальная заставка -->
+  <div class="music-gate" id="musicGate">
+    <div class="gate__heart-wrap">
+      <div class="gate__heart-bg"></div>
+      <p class="gate__text">Нажмите,<br>чтобы открыть<br>приглашение</p>
+    </div>
+  </div>
+
+  <main class="page">
+
+    <!-- ── ШАПКА ─────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="container">
+
+        <div class="hero__childhood">
+          <div class="hero-polaroid hero-seq hero-seq-left">
+            <figure class="polaroid polaroid--tilt-left">
+              <picture>
+                <source srcset="assets/images/sasha-child.webp" type="image/webp">
+                <img class="polaroid__photo" src="assets/images/sasha-child.png" alt="Саша в детстве">
+              </picture>
+              <figcaption class="polaroid__caption" data-text="hero.captionSasha">это - Саша</figcaption>
+            </figure>
+          </div>
+
+          <div class="hero-polaroid hero-seq hero-seq-right">
+            <figure class="polaroid polaroid--tilt-right">
+              <picture>
+                <source srcset="assets/images/ksusha-child.webp" type="image/webp">
+                <img class="polaroid__photo" src="assets/images/ksusha-child.png" alt="Ксюша в детстве">
+              </picture>
+              <figcaption class="polaroid__caption" data-text="hero.captionKsusha">а это - Ксюша</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="greeting hero-seq hero-seq-text">
+          <h1 class="h1"  data-text="hero.greetingTitle">Узнали?</h1>
+          <p class="lead" data-text="hero.greetingText">
+            Время пронеслось незаметно&nbsp;— и&nbsp;у&nbsp;этих&nbsp;двух&nbsp;милашек уже&nbsp;скоро&nbsp;свадьба!
+          </p>
+          <p class="lead lead--emphasis" data-text="hero.greetingBold">
+            Да-да, сами в&nbsp;шоке!
+          </p>
+        </div>
+
+        <div class="hero__couple hero-seq hero-seq-couple">
+          <figure class="polaroid polaroid--tilt-small">
+            <picture>
+              <source srcset="assets/images/couple-heart.webp" type="image/webp">
+              <img class="polaroid__photo" src="assets/images/couple-heart.png" alt="Саша и Ксюша сегодня">
+            </picture>
+            <figcaption class="polaroid__caption" data-text="hero.captionCouple">и вот мы теперь!</figcaption>
+          </figure>
+        </div>
+
+        <div class="invitation-intro">
+          <h2 class="h1 reveal-text"  data-text="hero.inviteTitle">Дорогие и близкие!</h2>
+          <p class="lead reveal-text" data-text="hero.inviteText">
+            Хотим разделить с&nbsp;вами одни&nbsp;из&nbsp;самых&nbsp;важных&nbsp;и&nbsp;радостных моментов&nbsp;нашей&nbsp;жизни!
+          </p>
+          <p class="lead lead--emphasis reveal-text" data-text="hero.inviteBold">
+            Приглашаем стать частью нашей&nbsp;свадьбы!
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="schedule__sep reveal" aria-hidden="true" hidden>
+      <img src="assets/icons/heart-3.svg" alt="" class="schedule__sep-heart">
+    </div>
+
+    <!-- ── ПРОГРАММА ──────────────────────────────────────────── -->
+    <section class="schedule">
+      <div class="container">
+
+        <!-- Роспись -->
+        <article class="schedule__day js-day1" hidden>
+          <h2 class="h1 schedule__label reveal-text">Роспись</h2>
+
+          <div class="schedule__date-block">
+            <p class="schedule__date selectable reveal-text">Четверг, 16&nbsp;июля 2026&nbsp;года</p>
+          </div>
+
+          <div class="cal reveal" aria-label="Неделя 13–19 июля 2026">
+            <div class="cal__month">Июль 2026</div>
+            <div class="cal__grid">
+              <div class="cal__dow">Пн</div><div class="cal__dow">Вт</div>
+              <div class="cal__dow">Ср</div><div class="cal__dow">Чт</div>
+              <div class="cal__dow">Пт</div><div class="cal__dow">Сб</div>
+              <div class="cal__dow">Вс</div>
+              <div class="cal__day">13</div><div class="cal__day">14</div>
+              <div class="cal__day">15</div>
+              <div class="cal__day cal__day--d1" title="День росписи">
+                <span class="cal__heart" aria-hidden="true">
+                  <img class="heart_date" src="assets/icons/heart-3.svg" alt="">
+                </span>
+                <span class="cal__day-num">16</span>
+              </div>
+              <div class="cal__day">17</div><div class="cal__day">18</div>
+              <div class="cal__day">19</div>
+            </div>
+          </div>
+
+          <div class="program reveal">
+            <div class="program__header">
+              <span class="program__title-wrap">
+                <img src="assets/icons/rings.svg"   alt="" class="program__icon--rings">
+                <span class="program__title">Тайминги</span>
+                <img src="assets/icons/heart-1.svg" alt="" class="program__icon--heart">
+              </span>
+            </div>
+            <ul class="program__list" role="list">
+              <li class="program__item">
+                <span class="program__time">15:45</span>
+                <span class="program__event">сбор гостей</span>
+              </li>
+              <li class="program__sep" aria-hidden="true"></li>
+              <li class="program__item">
+                <span class="program__time">16:20</span>
+                <span class="program__event">церемония</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dresscode">
+            <img class="block-icon reveal" src="assets/icons/dress.svg" alt="" aria-hidden="true">
+            <h2 class="h1 dresscode__heading reveal-text">Дресс-код</h2>
+            <p class="lead reveal-text">
+              Выбирайте что-то праздничное, светлое и&nbsp;яркое — в&nbsp;тон праздника!
+              Никаких излишне строгих и&nbsp;чёрных&nbsp;нарядов!
+            </p>
+            <p class="dresscode__warning reveal-text">
+              Важно: в&nbspбелом&nbsp— только&nbspневеста!
+            </p>
+          </div>
+
+          <div class="venue-block">
+            <img class="block-icon reveal" src="assets/icons/map.svg" alt="" aria-hidden="true">
+            <h2 class="h1 schedule__venue-title reveal-text">Место росписи</h2>
+            <div class="venue">
+              <figure class="polaroid polaroid--tilt-small venue__polaroid reveal">
+                <img class="polaroid__photo" src="assets/images/venue-zags.webp" alt="Дворец бракосочетания на ВДНХ" loading="lazy">
+                <figcaption class="polaroid__caption">Дворец бракосочетания на&nbsp;ВДНХ</figcaption>
+              </figure>
+              <p class="venue__address selectable reveal-text">Москва, проспект&nbsp;Мира, дом&nbsp;119&nbsp;стр&nbsp;421</p>
+              <a class="btn btn_secondary reveal"
+                 href="https://yandex.com/maps/-/CPCVQRl3"
+                 target="_blank" rel="noopener noreferrer">Построить маршрут</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="schedule__sep js-sep-zags reveal" aria-hidden="true" hidden>
+          <img src="assets/icons/heart-3.svg" alt="" class="schedule__sep-heart">
+        </div>
+
+        <!-- Семейный ужин -->
+        <article class="schedule__day js-dinner" hidden>
+          <h2 class="h1 schedule__label reveal-text">Семейный ужин</h2>
+
+          <div class="schedule__date-block reveal-text">
+            <p class="schedule__date selectable">Четверг, 16 июля 2026 года</p>
+            <p class="schedule__time">~19:00</p>
+          </div>
+
+          <p class="schedule__tbd reveal-text">Место уточним ближе к&nbsp;дате</p>
+        </article>
+
+        <div class="schedule__sep js-sep-party reveal" aria-hidden="true" hidden>
+          <img src="assets/icons/heart-3.svg" alt="" class="schedule__sep-heart">
+        </div>
+
+        <!-- Вечеринка -->
+        <article class="schedule__day js-day2" hidden>
+          <h2 class="h1 schedule__label reveal-text">Вечеринка</h2>
+
+          <div class="schedule__date-block">
+            <p class="schedule__date selectable reveal-text">Воскресенье, 19 июля 2026 года</p>
+          </div>
+
+          <div class="cal reveal" aria-label="Неделя 13–19 июля 2026">
+            <div class="cal__month">Июль 2026</div>
+            <div class="cal__grid">
+              <div class="cal__dow">Пн</div><div class="cal__dow">Вт</div>
+              <div class="cal__dow">Ср</div><div class="cal__dow">Чт</div>
+              <div class="cal__dow">Пт</div><div class="cal__dow">Сб</div>
+              <div class="cal__dow">Вс</div>
+              <div class="cal__day">13</div><div class="cal__day">14</div>
+              <div class="cal__day">15</div><div class="cal__day">16</div>
+              <div class="cal__day">17</div><div class="cal__day">18</div>
+              <div class="cal__day cal__day--d2" title="Вечеринка">
+                <span class="cal__heart" aria-hidden="true">
+                  <img class="heart_date" src="assets/icons/heart-3.svg" alt="">
+                </span>
+                <span class="cal__day-num">19</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="program program--glass reveal">
+            <div class="program__header">
+              <span class="program__title-wrap">
+                <img src="assets/icons/rings.svg"   alt="" class="program__icon--rings">
+                <span class="program__title">Тайминги</span>
+                <img src="assets/icons/heart-1.svg" alt="" class="program__icon--heart">
+              </span>
+            </div>
+            <ul class="program__list" role="list">
+              <li class="program__item">
+                <span class="program__time">15:00</span>
+                <span class="program__event">сбор гостей</span>
+              </li>
+              <li class="program__sep" aria-hidden="true"></li>
+              <li class="program__item">
+                <span class="program__time">16:00</span>
+                <span class="program__event">церемония</span>
+              </li>
+              <li class="program__sep" aria-hidden="true"></li>
+              <li class="program__item">
+                <span class="program__time">17:00</span>
+                <span class="program__event">праздничный ужин</span>
+              </li>
+              <li class="program__sep" aria-hidden="true"></li>
+              <li class="program__item">
+                <span class="program__time">23:00</span>
+                <span class="program__event">завершение</span>
+              </li>
+            </ul>
+            <img src="assets/icons/glass.svg" alt="" class="program__glass-img">
+          </div>
+
+          <div class="age-limit">
+            <img class="block-icon reveal" src="assets/icons/18+.svg" alt="" aria-hidden="true">
+            <p class="h1 age-limit__badge reveal-text">Только взрослые</p>
+            <p class="lead reveal-text">
+              Мы хотим, чтобы все гости могли отдохнуть и&nbsp;круто провести время, поэтому праздник&nbsp;строго&nbsp;без&nbsp;детей
+            </p>
+          </div>
+
+          <div class="dresscode">
+            <img class="block-icon reveal" src="assets/icons/dress.svg" alt="" aria-hidden="true">
+            <h2 class="h1 dresscode__heading reveal-text">Дресс-код</h2>
+            <p class="lead dresscode__lead reveal-text">
+              Будем рады, если&nbsp;вы&nbsp;поддержите стиль и&nbsp;цвет нашей свадьбы в&nbsp;своих&nbsp;нарядах
+            </p>
+
+            <div class="dresscode__palette reveal">
+              <span class="dresscode__swatch" style="--sw: #F3D8CD" title="#F3D8CD"></span>
+              <span class="dresscode__swatch" style="--sw: #E7D2E5" title="#E7D2E5"></span>
+              <span class="dresscode__swatch" style="--sw: #CCDBE2" title="#CCDBE2"></span>
+              <span class="dresscode__swatch" style="--sw: #EDB3C9" title="#EDB3C9"></span>
+            </div>
+
+            <p class="dresscode__warning reveal-text">
+              Важно: в&nbspбелом&nbsp— только&nbspневеста!
+            </p>
+
+            <div class="carousel reveal" role="region" aria-label="Примеры образов">
+              <figure class="polaroid polaroid--tilt-small carousel__polaroid">
+                <div class="carousel__photos">
+                  <img class="carousel__slide is-active" src="assets/images/look_01.webp" alt="Пример образа 1">
+                  <img class="carousel__slide" src="assets/images/look_02.webp" alt="Пример образа 2" loading="lazy">
+                  <img class="carousel__slide" src="assets/images/look_03.webp" alt="Пример образа 3" loading="lazy">
+                  <img class="carousel__slide" src="assets/images/look_04.webp" alt="Пример образа 4" loading="lazy">
+                  <img class="carousel__slide" src="assets/images/look_05.webp" alt="Пример образа 5" loading="lazy">
+                  <button class="carousel__btn carousel__btn--prev" aria-label="Предыдущий образ">&#8249;</button>
+                  <button class="carousel__btn carousel__btn--next" aria-label="Следующий образ">&#8250;</button>
+                </div>
+                <figcaption class="polaroid__caption carousel__counter" aria-live="polite">1 / 5</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          
+          <div class="wishes">
+            <img class="block-icon reveal" src="assets/icons/gift.svg" alt="" aria-hidden="true">
+            <h2 class="h1 reveal-text">Мини-пожелание</h2>
+            <p class="lead reveal-text">
+              Цветы завянут, а&nbsp;предметов для&nbsp;дома у&nbsp;нас уже и&nbsp;так&nbsp;предостаточно. Лучший&nbsp;подарок&nbsp;— вклад в&nbsp;семейный бюджет или&nbsp;свадебное&nbsp;путешествие!
+            </p>
+          </div>
+
+          <div class="venue-block">
+            <img class="block-icon reveal" src="assets/icons/map.svg" alt="" aria-hidden="true">
+            <h2 class="h1 schedule__venue-title reveal-text">Место вечеринки</h2>
+            <div class="venue">
+              <figure class="polaroid polaroid--tilt-small venue__polaroid reveal">
+                <img class="polaroid__photo" src="assets/images/venue-sunveranda.jpg" alt="The Sun Veranda" loading="lazy">
+                <figcaption class="polaroid__caption">The Sun Veranda</figcaption>
+              </figure>
+              <p class="venue__address selectable reveal-text">Московская область, город&nbsp;Солнечногорск, Тимоновское&nbsp;шоссе,&nbsp;дом&nbsp;36</p>
+              <a class="btn btn_secondary reveal"
+                 href="https://yandex.com/maps/-/CPCVQ4ic"
+                 target="_blank" rel="noopener noreferrer">Построить маршрут</a>
+            </div>
+          </div>
+
+          <div class="chat" id="chat" hыузidden>
+            <img class="block-icon reveal" src="assets/icons/chat.svg" alt="" aria-hidden="true">
+            <h2 class="h1 reveal-text">Чат для гостей</h2>
+            <p class="lead reveal-text">
+              Мы&nbsp;создали чатик&nbsp;праздника, в&nbsp;котором будем общаться и&nbsp;обмениваться контентом до, во&nbsp;время и&nbsp;после&nbsp;свадьбы
+            </p>
+            <a class="btn btn_secondary reveal" href="#" target="_blank" rel="noopener noreferrer">Вступить в&nbsp;чатик</a>
+          </div>
+
+           <div class="contacts">
+            <img class="block-icon reveal" src="assets/icons/contacts.svg" alt="" aria-hidden="true">
+            <h2 class="h1 reveal-text">Контакты</h2>
+            <p class="lead reveal-text">Остались вопросы по мероприятию или&nbsp;готовите&nbsp;творческий&nbsp;подарок?</p>
+            <ul class="contacts__list">
+              <li class="contacts__item reveal-text">
+                <span class="contacts__role selectable">Александр, ведущий</span>
+                <a class="contacts__phone" href="tel:+79000000000">+7 (900) 000-00-00</a>
+              </li>
+              <li class="contacts__item reveal-text">
+                <span class="contacts__role selectable">Аделина, организатор</span>
+                <a class="contacts__phone" href="tel:+79000000000">+7 (900) 000-00-00</a>
+              </li>
+            </ul>
+          </div>
+         
+        </article>
+
+      </div>
+    </section>
+
+    <div class="schedule__sep reveal" aria-hidden="true" hidden>
+      <img src="assets/icons/heart-3.svg" alt="" class="schedule__sep-heart">
+    </div>
+
+    <!-- ── АНКЕТА ──────────────────────────────────────────────── -->
+    <section class="rsvp" id="rsvp">
+      <div class="container">
+        <h2 class="h1 reveal-text">Анкета для гостей</h2>
+        <p class="lead reveal-text">Пожалуйста, заполните данные за себя и каждого,&nbsp;кто идёт&nbsp;с&nbsp;вами</p>
+        <form class="rsvp-form" id="rsvp-form" novalidate>
+          <div class="rsvp-form__list reveal" id="rsvp-guest-list"></div>
+          <button type="button" class="btn btn_secondary rsvp-form__add-btn reveal" id="rsvp-add-btn">+ Добавить гостя</button>
+          <button type="submit" class="btn rsvp-form__submit reveal">Отправить анкету</button>
+
+          <div class="rsvp-confirm" id="rsvp-confirm" hidden>
+            <div class="rsvp-confirm__heart"></div>
+            <p class="rsvp-confirm__title">Спасибо за&nbsp;ответы!</p>
+            <p class="rsvp-confirm__text">Ксюша уже придумала идеальную рассадку&nbsp;гостей. Саша тоже… Но&nbsp;это&nbsp;уже совсем другая&nbsp;история&nbsp;😄</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── ПОДВАЛ ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__sign reveal-text">с любовью, Ксюша&nbsp;и&nbsp;Саша</p>
+      <div class="footer__heart-wrap reveal">
+        <picture>
+          <source srcset="assets/images/couple-heart-footer.webp" type="image/webp">
+          <img class="footer__photo" src="assets/images/couple-heart-footer.png" alt="Ксюша и Саша" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
