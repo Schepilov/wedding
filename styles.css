@@ -676,6 +676,178 @@ a, button {
   max-width: var(--max-text);
 }
 
+/* ---- Раскрывающаяся схема парковки ---- */
+.parking {
+  width: 100%;
+  margin-top: calc(-1 * var(--space-xs));
+}
+
+.parking__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px;
+  border: 0;
+  border-bottom: 1.5px dashed currentColor;
+  background: transparent;
+  color: var(--color-accent);
+  font: 700 var(--fs-body) / 1.2 var(--font-body);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.parking__chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.parking__toggle[aria-expanded="true"] .parking__chevron {
+  transform: translateY(3px) rotate(225deg);
+}
+
+.parking__toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+  border-bottom-color: transparent;
+}
+
+.parking__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    grid-template-rows 0.55s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.35s ease,
+    transform 0.55s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.parking.is-open .parking__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.parking__panel-inner {
+  overflow: hidden;
+  padding-inline: 8px;
+}
+
+.parking__card {
+  position: relative;
+  width: 100%;
+  margin: var(--space-md) auto 10px;
+  padding: 10px;
+  background: var(--color-white);
+  box-shadow: 0 8px 22px rgba(52, 4, 16, 0.12);
+}
+
+.parking__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.parking__zoom {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 7px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-pill);
+  background: rgba(52, 4, 16, 0.76);
+  color: var(--color-white);
+  font: 700 14px / 1 var(--font-body);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(52, 4, 16, 0.2);
+  backdrop-filter: blur(6px);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.parking__zoom:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: clamp(18px, 4vw, 48px);
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+  animation: lightboxIn 0.3s ease both;
+}
+
+.lightbox::backdrop {
+  background: rgba(24, 2, 8, 0.88);
+  backdrop-filter: blur(5px);
+}
+
+.lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - clamp(36px, 8vw, 96px));
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox__close {
+  position: fixed;
+  z-index: 1;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(52, 4, 16, 0.72);
+  color: var(--color-white);
+  font: 300 34px / 1 var(--font-body);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.lightbox__close:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .parking__toggle:hover {
+    color: color-mix(in srgb, var(--color-accent), white 18%);
+  }
+
+  .parking__zoom:hover {
+    background: rgba(231, 13, 61, 0.9);
+    transform: translateY(-2px);
+  }
+}
+
 /* ---- Дресс-код ---- */
 .dresscode {
   margin-top: var(--space-xl);
@@ -1495,5 +1667,14 @@ body.is-open .hero-seq-couple {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .parking__panel,
+  .parking__chevron {
+    transition: none;
+  }
+
+  .lightbox[open] {
+    animation: none;
   }
 }

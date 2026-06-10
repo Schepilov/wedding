@@ -220,12 +220,81 @@
         <article class="schedule__day js-dinner" hidden>
           <h2 class="h1 schedule__label reveal-text">Семейный ужин</h2>
 
-          <div class="schedule__date-block reveal-text">
-            <p class="schedule__date selectable">Четверг, 16 июля 2026 года</p>
-            <p class="schedule__time">~18:00</p>
+          <div class="schedule__date-block">
+            <p class="schedule__date selectable reveal-text">Четверг, 16 июля 2026 года</p>
           </div>
 
-          <p class="schedule__tbd reveal-text">Место уточним ближе к&nbsp;дате</p>
+          <div class="cal reveal" aria-label="Неделя 13–19 июля 2026">
+            <div class="cal__month">Июль 2026</div>
+            <div class="cal__grid">
+              <div class="cal__dow">Пн</div><div class="cal__dow">Вт</div>
+              <div class="cal__dow">Ср</div><div class="cal__dow">Чт</div>
+              <div class="cal__dow">Пт</div><div class="cal__dow">Сб</div>
+              <div class="cal__dow">Вс</div>
+              <div class="cal__day">13</div><div class="cal__day">14</div>
+              <div class="cal__day">15</div>
+              <div class="cal__day cal__day--d1" title="Семейный ужин">
+                <span class="cal__heart" aria-hidden="true">
+                  <img class="heart_date" src="assets/icons/heart-3.svg" alt="">
+                </span>
+                <span class="cal__day-num">16</span>
+              </div>
+              <div class="cal__day">17</div><div class="cal__day">18</div>
+              <div class="cal__day">19</div>
+            </div>
+          </div>
+
+          <div class="program reveal">
+            <div class="program__header">
+              <span class="program__title-wrap">
+                <img src="assets/icons/rings.svg" alt="" class="program__icon--rings">
+                <span class="program__title">Тайминги</span>
+                <img src="assets/icons/heart-1.svg" alt="" class="program__icon--heart">
+              </span>
+            </div>
+            <ul class="program__list" role="list">
+              <li class="program__item">
+                <span class="program__time">18:00</span>
+                <span class="program__event">сбор гостей</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="venue-block">
+            <img class="block-icon reveal" src="assets/icons/map.svg" alt="" aria-hidden="true">
+            <h2 class="h1 schedule__venue-title reveal-text">Место ужина</h2>
+            <div class="venue">
+              <figure class="polaroid polaroid--tilt-small venue__polaroid reveal">
+                <img class="polaroid__photo" src="assets/images/bereg-veranda.webp" alt="Ресторан «Берег», верхняя веранда" loading="lazy">
+                <figcaption class="polaroid__caption">Ресторан Берег,<br>верхняя веранда</figcaption>
+              </figure>
+              <p class="venue__address selectable reveal-text">Москва, улица&nbsp;Исаковского, дом&nbsp;37&nbsp;корпус&nbsp;2&nbsp;строение&nbsp;1</p>
+              <a class="btn btn_secondary reveal"
+                 href="https://yandex.ru/maps/-/CPhcE8O-"
+                 target="_blank" rel="noopener noreferrer">Построить маршрут</a>
+              <div class="parking reveal">
+                <button class="parking__toggle" type="button"
+                        aria-expanded="false" aria-controls="dinner-parking">
+                  <span>парковка для гостей</span>
+                  <span class="parking__chevron" aria-hidden="true"></span>
+                </button>
+                <div class="parking__panel" id="dinner-parking" aria-hidden="true">
+                  <div class="parking__panel-inner">
+                    <figure class="parking__card">
+                      <img class="parking__image"
+                           src="assets/images/bereg-parking.webp"
+                           alt="Схема проезда к парковке ресторана «Берег»"
+                           loading="lazy">
+                      <button class="parking__zoom" type="button"
+                              aria-haspopup="dialog" aria-controls="parking-lightbox">
+                        увеличить
+                      </button>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
         <div class="schedule__sep js-sep-party reveal" aria-hidden="true" hidden>
@@ -444,6 +513,13 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="lightbox" id="parking-lightbox" aria-label="Схема парковки">
+    <button class="lightbox__close" type="button" aria-label="Закрыть">&times;</button>
+    <img class="lightbox__image"
+         src="assets/images/bereg-parking.webp"
+         alt="Схема проезда к парковке ресторана «Берег»">
+  </dialog>
 
   <script src="config.js"></script>
   <script src="script.js"></script>

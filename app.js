@@ -197,6 +197,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Раскрывающаяся схема парковки
+  document.querySelectorAll('.parking').forEach(parking => {
+    const toggle = parking.querySelector('.parking__toggle');
+    const panel = parking.querySelector('.parking__panel');
+
+    if (!toggle || !panel) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = parking.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      window._haptics?.trigger([20]);
+    });
+  });
+
+  // Полноэкранный просмотр схемы парковки
+  const parkingLightbox = document.getElementById('parking-lightbox');
+  const parkingZoom = document.querySelector('.parking__zoom');
+  const lightboxClose = parkingLightbox?.querySelector('.lightbox__close');
+
+  if (parkingLightbox && parkingZoom && lightboxClose) {
+    parkingZoom.addEventListener('click', () => {
+      parkingLightbox.showModal();
+      window._haptics?.trigger([20]);
+    });
+
+    lightboxClose.addEventListener('click', () => parkingLightbox.close());
+
+    parkingLightbox.addEventListener('click', event => {
+      if (event.target === parkingLightbox) parkingLightbox.close();
+    });
+
+    parkingLightbox.addEventListener('close', () => parkingZoom.focus());
+  }
+
   // Reveal-анимации при скролле
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
