@@ -208,6 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = parking.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(isOpen));
       panel.setAttribute('aria-hidden', String(!isOpen));
+
+      if (isOpen) {
+        panel.querySelectorAll('iframe[data-src]').forEach(iframe => {
+          iframe.src = iframe.dataset.src;
+          iframe.removeAttribute('data-src');
+        });
+      }
+
       window._haptics?.trigger([20]);
     });
   });
